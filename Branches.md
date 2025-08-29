@@ -95,7 +95,7 @@ Commit your changes and add a message:
 
 1. Create a new branch in your repository:
    `git branch MyBranch`
-2. Switch to the new branch:
+2. Activate and switch to the new branch:
    `git checkout MyBranch`
 3. Verify you're in the right branch:
    `git branch`
