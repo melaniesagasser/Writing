@@ -1,0 +1,125 @@
+# AsciiDoc Cheat Sheet
+
+This Cheat Sheet provides a quick overview of the most common AsciiDoc syntax. For more information, refer to the official documentation for AsciiDoc at https://asciidoctor.org/docs/asciidoc-writers-guide/. 
+
+
+## About AsciiDoc
+
+AsciiDoc is a lightweight markup language like Markdown. Like Markdown, AsciiDoc uses plain text syntax, which means that you can use any text editor to create AsciiDoc files. In this example, we'll use Visual Studio Code as it's a common editor used by software developers.However, compared to Markdown, it provides some additional advantages:
+
+- More formatting options
+
+
+== Preparation: Using AsciiDoc with Visual Studio Code
+
+To use AsciiDoc in Visual Studio Code, add the following extensions in Visual Studio Code:
+
+* AsciiDoc by asciidoctor
+* ASCII Table
+
+To save a file in the AsciiDoc format, use the `.adoc` file extension.
+
+== Cheat Sheet
+
+=== Headings
+Headings, or section titles, use the equal sign in AsciiDoc but the hashtag sign from Markdown is also recognized. The first-level heading is the document title and the paragraph below it the preamble, then follow the next-level headings.
+
+= Document Title
+== Second-level heading/section
+=== Third-level heading/section
+
+NOTE: A document can only have multiple level 0 headings if the doctype is set to `book`.
+
+=== Paragraphs
+To add paragraphs, hit the `Return` key twice to insert a blank line.
+
+=== Line Breaks
+Use a space followed by a `+` sign, or use the `[%hardbreaks]` option at the beginning of a paragraph. To preserve the hardbreaks throughout the complete document, add this at the beginning of your document: +
+`:hardbreaks:`
+
+=== Basic Formatting
+In AsciiDoc, you can format text as *bold*, _italic_ or #highlighted#.
+Use a double formatting sign to highlight parts of a word instead of the complete word. For example, **un**filtered instead of *un*filtered. 
+
+=== Cautions and Warnings (Admonitions)
+Use the following admonitions to advise the user. The label must be uppercase and followed by a colon (:). An icon will be added to the admonition.
+[%hardbreaks]
+- NOTE
+- TIP
+- IMPORTANT
+- CAUTION
+- WARNING
+
+=== Lists
+Use an asterisk (*) or minus sign (-) followed by a blank for each list item. Note that lists with minus signs can't be indented though. Blank lines are required before and after lists. You can add a title to a list by prefixing the title with a period (.).
+
+.This is the unordered list's header (using asterisks or minus signs)
+* This is the first-level item.
+** This is a second-level item.
+*** And this a third-level item.
+* Minus signs can only be used for first-level item lists.
+
+.This is an ordered list (using dots or numbers)
+. First item
+. Second item
+. Third item
+
+.This is a description list (using double quotes)
+Free:: You can order the main components for free.
+Paid:: The additional components are only available for purchase.
+
+
+=== Comments
+Use two forward slashes for comments. Comments won't be rendered in the output.
+// This is a comment.
+
+=== External Links
+You can just copy and paste a link into an AsciiDoc. To hide the "https" part in the rendered links, add the `:hide-uri-scheme:` at the top of the document. 
+To add a link text, add it after the link inside square brackets following the syntax `URL[Link Text]`.
+
+For example:
+https://asciidoctor.org/docs/asciidoc-writers-guide/[Go to the official documentation]
+
+=== Internal Links
+Use double greater/smaller than signs for internal links: `\<<anchor/section title,link text>>`
+
+For example:
+See also <<Links,the section on links>>
+
+=== Images
+To add images, use the following syntax:
+\image::filename.png[caption="Screenshot"]
+
+=== Tables
+To add a table, add `|===` in a new line. Add an empty line after the first row to make it the header row. In the line before the table, you can add parameters to specify custom styles:
+
+* [grid=rows], [grid=none]
+* [frame=none]
+
+[grid=rows]
+|===
+|Header Column 1 | Header Column 2
+
+|Column 1, Row 1 | Column 2, Row 1
+|Column 1, Row 2 | Column 2, Row 2
+|===
+
+=== Reuse Text Files 
+You can include text files or other files following the syntax:
+
+`include::filename.adoc[text]`
+
+=== Attributes
+Define attributes in the document by placing them inside colons, followed by the value:
+
+:ProductName: MS Editor++
+:ProductVersion: 25.12.1
+:CompanyName: MySpace Inc.
+:CompanyURL-MSEditor: https://myspaceinc.com/products/softwareproducts/editors/HTMLeditors/MSEditor/latest.com
+
+Then refer to the attributes in the text by putting the attribute name inside curly brackets:
+
+At {CompanyName}, we spent the last decade to enhance our flagship {ProductName}. As of September 01, we release the newest version: {ProductVersion}. You can find more information on our {CompanyURL-MSEditor}[official website].
+
+
+
