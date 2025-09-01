@@ -1,9 +1,13 @@
-# AsciiDoc Cheat Sheet
+= AsciiDoc Cheat Sheet
+:appversion: 1.0 //example for a customer-specific attribute
+:toc: // Creates a table of content
+:source-highlighter: //Highlights specific parts of code samples
+:hide-uri-scheme: //Hides the http-part at the beginning of a URL
 
 This Cheat Sheet provides a quick overview of the most common AsciiDoc syntax. For more information, refer to the official documentation for AsciiDoc at https://asciidoctor.org/docs/asciidoc-writers-guide/. 
 
 
-## About AsciiDoc
+== About AsciiDoc
 
 AsciiDoc is a lightweight markup language like Markdown. Like Markdown, AsciiDoc uses plain text syntax, which means that you can use any text editor to create AsciiDoc files. In this example, we'll use Visual Studio Code as it's a common editor used by software developers.However, compared to Markdown, it provides some additional advantages:
 
@@ -24,9 +28,11 @@ To save a file in the AsciiDoc format, use the `.adoc` file extension.
 === Headings
 Headings, or section titles, use the equal sign in AsciiDoc but the hashtag sign from Markdown is also recognized. The first-level heading is the document title and the paragraph below it the preamble, then follow the next-level headings.
 
+----
 = Document Title
 == Second-level heading/section
 === Third-level heading/section
+----
 
 NOTE: A document can only have multiple level 0 headings if the doctype is set to `book`.
 
@@ -63,6 +69,7 @@ Use an asterisk (*) or minus sign (-) followed by a blank for each list item. No
 . First item
 . Second item
 . Third item
+.. Nested list item
 
 .This is a description list (using double quotes)
 Free:: You can order the main components for free.
@@ -110,16 +117,65 @@ You can include text files or other files following the syntax:
 `include::filename.adoc[text]`
 
 === Attributes
-Define attributes in the document by placing them inside colons, followed by the value:
+Attributes are usually part of the document header, placed directly below the document title (no empty line required). Define attributes in the document by placing them inside colons, followed by the value. For example:
 
 :ProductName: MS Editor++
 :ProductVersion: 25.12.1
 :CompanyName: MySpace Inc.
 :CompanyURL-MSEditor: https://myspaceinc.com/products/softwareproducts/editors/HTMLeditors/MSEditor/latest.com
 
-Then refer to the attributes in the text by putting the attribute name inside curly brackets:
+Then refer to the attributes in the text by putting the attribute name inside curly brackets. For example:
 
 At {CompanyName}, we spent the last decade to enhance our flagship {ProductName}. As of September 01, we release the newest version: {ProductVersion}. You can find more information on our {CompanyURL-MSEditor}[official website].
 
+You can also set the base path to images (default: empty), icons (default: ./images/icons), stylesheets (default: ./stylesheets) and JavaScript files (default: ./javascripts). For example:
 
+:imagesdir: ./images
+:iconsdir: ./icons
+:stylesdir: ./styles
+:scriptsdir: ./js
 
+=== Table of Contents
+
+To display a table of contents at the beginning of your document, place the `:toc:` attribute into the document header.
+
+=== Code Samples
+To add code samples, add a title and then the programming language into square brackets, followed by 4 dashes as a delimiter of the code block. To highlight the parts of the code, add the `:source-highlighter:` attribute to the document header.
+
+.Title of the Code Sample
+[source,py]
+----
+print("Hello World!")
+----
+
+You can include source code that resides in a separate file:
+
+[source,ruby]
+----
+include::example.html[]
+----
+
+=== Quotes
+Quotes are added in between 4 dashes as delimiters, and preceded by an id in double square brackets: `\[[gettysburg]]`
+
+Then follows the style `quote` and the author and description in square brackets: `\[quote, name, cite title]`
+
+.Gettysburg Address
+[[gettysburg]]
+[quote, Abraham Lincoln, Address delivered at the dedication of the Cemetery at Gettysburg]
+____
+Four score and seven years ago our fathers brought forth
+on this continent a new nation...
+
+Now we are engaged in a great civil war, testing whether
+that nation, or any nation so conceived and so dedicated,
+can long endure. ...
+____
+
+=== Special Characters
+
+(C) for Copyright
+(R) for Registered
+(TM) for Trademark
+
+// bis Target window
