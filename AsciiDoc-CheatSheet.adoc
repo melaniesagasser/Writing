@@ -1,17 +1,34 @@
-= AsciiDoc Cheat Sheet
-:appversion: 1.0 //example for a customer-specific attribute
-:toc: // Creates a table of content
-:source-highlighter: //Highlights specific parts of code samples
-:hide-uri-scheme: //Hides the http-part at the beginning of a URL
+= AsciiDoc Syntax Quick Reference
+:toc: 
+// Creates a table of content
+:description: This document provides a quick overview of the most common AsciiDoc syntax. 
+// A description that you can reference throughout the document by adding {description}.
+:source-highlighter:
+//Highlights specific parts of code samples
+:hide-uri-scheme: 
+//Hides the http-part at the beginning of a URL
+:appversion: 1.0 
+//example for a customer-specific attribute
+:sectnums!:
+// to number the sections, turned off by adding an exclamation mark
+// to disable the auto-generation of section IDs, unset the `sectids` attribute by adding: `:sectids!:` 
 
-This Cheat Sheet provides a quick overview of the most common AsciiDoc syntax. For more information, refer to the official documentation for AsciiDoc at https://asciidoctor.org/docs/asciidoc-writers-guide/. 
+
+AsciiDoc Quick Reference provides a quick overview of the most common AsciiDoc syntax. 
+For more information, refer to the official documentation for AsciiDoc at https://asciidoctor.org/docs/asciidoc-writers-guide/. 
 
 
 == About AsciiDoc
 
-AsciiDoc is a lightweight markup language like Markdown. Like Markdown, AsciiDoc uses plain text syntax, which means that you can use any text editor to create AsciiDoc files. In this example, we'll use Visual Studio Code as it's a common editor used by software developers.However, compared to Markdown, it provides some additional advantages:
+AsciiDoc is a lightweight markup language like Markdown. 
+Like Markdown, AsciiDoc uses plain text syntax, which means that you can use any text editor to create AsciiDoc files. 
+In this example, we'll use Visual Studio Code as it's a common editor used by software developers. 
+However, compared to Markdown, it provides some additional advantages:
 
 - More formatting options
+- Reuse of text files inside documents
+- Consistent wording and easy replacement through attributes
+- Publication in various output formats is intended by design
 
 
 == Preparation: Using AsciiDoc with Visual Studio Code
@@ -23,7 +40,24 @@ To use AsciiDoc in Visual Studio Code, add the following extensions in Visual St
 
 To save a file in the AsciiDoc format, use the `.adoc` file extension.
 
-== Cheat Sheet
+== General Recommendations
+* Start each sentence in a new line. 
+* Use only four characters as delimiters. You could use more, but it's best practice to stick to four (or only two in the case of an open block).
+* Use document attributes as a best practice. Group them together for easy reference:
+** Metadata for indexing
+** Settings such as icons.
+** Refs for URLs and Image links.
+*** URLs are best stored as attributes as they can change frequently and can be rather long. For example: `:url-issues: https://example.com`. Prefix similar attributes with the same word, so that the text auto-completion of your editor can suggest you possible options as you enter the prefix.
+* Add an author line and a revision line as good practice. For example:
+----
+= Document Title
+Author Name <author@example.org>
+v1.0, 2012-02-10
+----
+The version number is optional.
+
+
+== Quick Reference
 
 === Headings
 Headings, or section titles, use the equal sign in AsciiDoc but the hashtag sign from Markdown is also recognized. The first-level heading is the document title and the paragraph below it the preamble, then follow the next-level headings.
@@ -36,6 +70,14 @@ Headings, or section titles, use the equal sign in AsciiDoc but the hashtag sign
 
 NOTE: A document can only have multiple level 0 headings if the doctype is set to `book`.
 
+=== Block Titles
+To assing a title to a paragraph, list, or delimited block element, precede the title with a dot:
+----
+.To-Do List
+* Learn AsciiDoc
+* Install AsciiDoc with Visual Studio Code
+----
+
 === Paragraphs
 To add paragraphs, hit the `Return` key twice to insert a blank line.
 
@@ -45,7 +87,7 @@ Use a space followed by a `+` sign, or use the `[%hardbreaks]` option at the beg
 
 === Basic Formatting
 In AsciiDoc, you can format text as *bold*, _italic_ or #highlighted#.
-Use a double formatting sign to highlight parts of a word instead of the complete word. For example, **un**filtered instead of *un*filtered. 
+Use a double formatting sign to highlight parts of a word instead of the complete word. For example, \\**un**filtered instead of *un*filtered. 
 
 === Cautions and Warnings (Admonitions)
 Use the following admonitions to advise the user. The label must be uppercase and followed by a colon (:). An icon will be added to the admonition.
@@ -56,46 +98,106 @@ Use the following admonitions to advise the user. The label must be uppercase an
 - CAUTION
 - WARNING
 
+For an admonition block, use four equal signs as delimiter:
+----
+====
+NOTE: This is a note.
+It has several lines
+====
+----
+
 === Lists
 Use an asterisk (*) or minus sign (-) followed by a blank for each list item. Note that lists with minus signs can't be indented though. Blank lines are required before and after lists. You can add a title to a list by prefixing the title with a period (.).
 
 .This is the unordered list's header (using asterisks or minus signs)
+----
 * This is the first-level item.
 ** This is a second-level item.
 *** And this a third-level item.
 * Minus signs can only be used for first-level item lists.
-
+----
 .This is an ordered list (using dots or numbers)
+----
 . First item
 . Second item
 . Third item
 .. Nested list item
+----
 
 .This is a description list (using double quotes)
+----
 Free:: You can order the main components for free.
-Paid:: The additional components are only available for purchase.
 
+Paid:: The additional components are only available for purchase.
+----
 
 === Comments
 Use two forward slashes for comments. Comments won't be rendered in the output.
+----
 // This is a comment.
+----
 
-=== External Links
+Use four forward slashes for a comment block:
+----
+////
+First line of comment
+Second line of coment
+ ////
+----
+
+=== Links
+
+==== External Links
 You can just copy and paste a link into an AsciiDoc. To hide the "https" part in the rendered links, add the `:hide-uri-scheme:` at the top of the document. 
 To add a link text, add it after the link inside square brackets following the syntax `URL[Link Text]`.
 
 For example:
+----
 https://asciidoctor.org/docs/asciidoc-writers-guide/[Go to the official documentation]
+----
 
-=== Internal Links
-Use double greater/smaller than signs for internal links: `\<<anchor/section title,link text>>`
+==== Internal Links/Cross-References
+Use double greater/smaller than signs for internal links: `\<<anchor/section title or ID,link text>>`
 
 For example:
+----
 See also <<Links,the section on links>>
+----
+
+You can also use the xref macro to achieve the same:
+----
+See also xref:Links[the section on links.]
+----
+
+
+==== Links to Relative Files
+To link to an external file relative to your document, follow this syntax:
+----
+`link:Branches.md[Branching in Git and GitHub]`
+----
+
+If the file is an HTML file, you can link directly to a section in that file:
+----
+link:external.html#livereload[LiveReload]
+----
 
 === Images
-To add images, use the following syntax:
-\image::filename.png[caption="Screenshot"]
+To add images, use the following syntax where the filename is followed by alt text in square brackets:
+`\image::filename.png[Screenshot]`
+
+You can also add an ID, a title, set its dimensions (width and height) and make it a link:
+-----
+[#img-sunset]
+.A mountain sunset
+[link=https://www.flickr.com/photos/javh/5448336655]
+image::sunset.jpg[Sunset,300,200]
+-----
+
+To include an image file *inline*, use the `image:` prefix instead:
+-----
+Click the image:save.png[Save, title="Save"] button.
+-----
+The optional title is displayed as a tooltip for inline images.
 
 === Tables
 To add a table, add `|===` in a new line. Add an empty line after the first row to make it the header row. In the line before the table, you can add parameters to specify custom styles:
@@ -103,13 +205,15 @@ To add a table, add `|===` in a new line. Add an empty line after the first row 
 * [grid=rows], [grid=none]
 * [frame=none]
 
+
+
 [grid=rows]
 |===
 |Header Column 1 | Header Column 2
-
 |Column 1, Row 1 | Column 2, Row 1
 |Column 1, Row 2 | Column 2, Row 2
 |===
+
 
 === Reuse Text Files 
 You can include text files or other files following the syntax:
@@ -119,28 +223,37 @@ You can include text files or other files following the syntax:
 === Attributes
 Attributes are usually part of the document header, placed directly below the document title (no empty line required). Define attributes in the document by placing them inside colons, followed by the value. For example:
 
+----
 :ProductName: MS Editor++
 :ProductVersion: 25.12.1
 :CompanyName: MySpace Inc.
 :CompanyURL-MSEditor: https://myspaceinc.com/products/softwareproducts/editors/HTMLeditors/MSEditor/latest.com
+----
 
 Then refer to the attributes in the text by putting the attribute name inside curly brackets. For example:
 
-At {CompanyName}, we spent the last decade to enhance our flagship {ProductName}. As of September 01, we release the newest version: {ProductVersion}. You can find more information on our {CompanyURL-MSEditor}[official website].
+At \{CompanyName}, we spent the last decade to enhance our flagship \{ProductName}. As of September 01, we release the newest version: \{ProductVersion}. You can find more information on our \{CompanyURL-MSEditor}[official website].
 
 You can also set the base path to images (default: empty), icons (default: ./images/icons), stylesheets (default: ./stylesheets) and JavaScript files (default: ./javascripts). For example:
 
+----
 :imagesdir: ./images
 :iconsdir: ./icons
 :stylesdir: ./styles
 :scriptsdir: ./js
+----
+
+==== List of Useful Attributes
+`:sectnums:` Auto-numbers the sections. To turn off the numbering for a specific section, place `:sectnums!:` at the top of the section. This overrides the document-wide setting for this specific section.
+`:toc:` Creates a table of contents at the beginning of the document
+
 
 === Table of Contents
 
 To display a table of contents at the beginning of your document, place the `:toc:` attribute into the document header.
 
-=== Code Samples
-To add code samples, add a title and then the programming language into square brackets, followed by 4 dashes as a delimiter of the code block. To highlight the parts of the code, add the `:source-highlighter:` attribute to the document header.
+=== Code Samples or User Input
+To add code samples, add a title and then the programming language into square brackets, followed by four or more hyphens as a delimiter of the code block. To highlight the parts of the code, add the `:source-highlighter:` attribute to the document header.
 
 .Title of the Code Sample
 [source,py]
@@ -150,16 +263,34 @@ print("Hello World!")
 
 You can include source code that resides in a separate file:
 
-[source,ruby]
+[source,html]
 ----
 include::example.html[]
 ----
 
+See also <<Code Callouts>>.
+
+=== Code Callouts
+Code callouts explain lines of source code. The explanations are numbered and specified below the code block.
+
+----
+    [source,ruby]
+    ----
+    require 'asciidoctor'  # <1>
+
+    Asciidoctor.convert_file 'mysample.adoc'  # <2>
+    ----
+    <1> Imports the library
+    <2> Reads, parses, and converts the file
+----
+
+
 === Quotes
-Quotes are added in between 4 dashes as delimiters, and preceded by an id in double square brackets: `\[[gettysburg]]`
+Quotes are added in between 4 dashes as delimiters, and preceded by an ID in double square brackets: `\[[gettysburg]]`
 
-Then follows the style `quote` and the author and description in square brackets: `\[quote, name, cite title]`
+Then follows the style `quote` and the author and description in square brackets: `\[quote, name, cite title]`. Notice that the quote itself is delimited by four underscores.
 
+----
 .Gettysburg Address
 [[gettysburg]]
 [quote, Abraham Lincoln, Address delivered at the dedication of the Cemetery at Gettysburg]
@@ -171,11 +302,67 @@ Now we are engaged in a great civil war, testing whether
 that nation, or any nation so conceived and so dedicated,
 can long endure. ...
 ____
+----
+
+If the quote contains just a single line, you can add the block style in square brackets instead of using delimiters:
+----
+[quote]
+Never do today what you can put off 'til tomorrow.
+----
 
 === Special Characters
-
+....
 (C) for Copyright
 (R) for Registered
 (TM) for Trademark
+....
 
-// bis Target window
+=== Sidebar
+To display text outside the flow of the document, add the sidebar block delimited by four asterisks:
+----
+****
+Sidebar comment
+****
+----
+
+=== Literal Style
+To display text exactly as entered, use four dots as delimiters:
+
+----
+....
+Enter (C) or (TM) to display the Copyright or Trademark signs in your document.
+....
+----
+
+=== Examples Block
+To add examples, use four equal signs as delimiters for your example block:
+
+----
+====
+Example: HTML File
+In this example, ...
+====
+----
+
+=== Block Metadata
+Blocks are special sections in AsciiDoc that are delimited by four special signs at the start and the end of the block. Examples for blocks are quotes, examples, sample code, and literal style. 
+You can add metadata to the block (see <<Quotes>>) including one or more of the following metadata types:
+
+----
+.Title
+[[ID or anchor]]
+[style (for example, "quote"), followed by a comma and further attributes like an explanation of the block]
+
+----
+
+The style controls how the block is converted. See the table at https://asciidoctor.org/docs/asciidoc-writers-guide/#delimited-blocks for more information about styles.
+
+
+
+// Tables nochmal genauer
+
+// Footnotes, Indexes, appendix preface, conditional markup, mathematical formulas, diagrams, themes, etc.: see https://asciidoctor.org/docs/user-manual 
+
+// Asciidoctor processor to create the output (PDF, HTML, ePub, etc.). How to customize the template
+
+// Before you can use the Asciidoctor processor, you have to install the Asciidoctor Ruby Gem. Review the Asciidoctor Installation Guide if you need help to install the gem.
