@@ -2,8 +2,8 @@
 
 There are two ways you can create and work with branches: Locally through Git, or remotely through a web-hosted Git repository like GitHub.
 
-- [Working with Branches in GitHub]#working-with-branches-in-github
-- [Working with Branches in Git]#working-with-branches-in-git
+- [Working with Branches in GitHub](#working-with-branches-in-github)
+- [Working with Branches in Git](#working-with-branches-in-git)
 
 
 ## Working with Branches in GitHub
