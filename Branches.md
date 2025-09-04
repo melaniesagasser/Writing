@@ -2,6 +2,10 @@
 
 There are two ways you can create and work with branches: Locally through Git, or remotely through a web-hosted Git repository like GitHub.
 
+- [Working with Branches in GitHub]#working-with-branches-in-github
+- [Working with Branches in Git]#working-with-branches-in-git
+
+
 ## Working with Branches in GitHub
 
 The following describes how you work with branches in the GitHub web UI.
@@ -10,7 +14,7 @@ The following describes how you work with branches in the GitHub web UI.
 
 To create a branch in GitHub:
 
-1. Log into your GitHub account.
+1. Log in to your GitHub account.
 2. Go to your repository's main branch.
 3. Click the dropdown menu for the main branch that's located under the repository's title. By default, the menu displays `main`.
 4. In the entry field with the search icon, enter a name for your child branch.
@@ -62,11 +66,11 @@ To add a file to a child branch in GitHub:
 2. Select the `Delete branch` button that's displayed next to the message `Pull request successfully merged and closed`.
 **Result:** The child branch is successfully deleted.
 
+
 ## Working with Branches in Git
+To work with branches in your local Git repository, enter the git commands in a command-line tool.
 
---------
-
-
+<!--
 ## Creating a New Local Repository
 
 1. Create a new local repository:
@@ -91,13 +95,16 @@ To add a file to a child branch in GitHub:
 Commit your changes and add a message:
 `git commit -m "Added newfile"
 
+-->
+
 ## Creating a Branch
 
-1. Create a new branch in your repository:
+1. Go to the folder you want to create a branch for using the `cd` command. For example: `cd FolderName`.
+2. Create a new branch in your repository and give it a name (for example, MyBranch):
    `git branch MyBranch`
-2. Activate and switch to the new branch:
+3. Activate and switch to the new branch:
    `git checkout MyBranch`
-3. Verify you're in the right branch:
+4. Verify you're in the right branch:
    `git branch`
    Note: The branch that is highlighted with an asterisk is the active branch.
 **Note:** As a shortcut, you can create and navigate to a new branch in one go:
@@ -121,14 +128,17 @@ Then use `git commit -m "My Message"` to commit your changes.
 
 ## Reverting Committed Changes
 
-`git revert HEAD --no-edit` The shortcut HEAD rolls back the last commit. You could also specify the ID of your commit here.
+To revert changes after you've committed them, use the following command:
+`git revert HEAD --no-edit` 
+
+The shortcut HEAD rolls back the last commit. You could also specify the ID of your commit here.
 
 ## Merging Changes Into Another Branch
 
 1. Switch to the main branch using the `git checkout`command:
    `git checkout master`
-2. Merge the changes from NewBranch into Master:
-   `git merge NewBranch`
+2. Merge the changes from MyBranch into Master:
+   `git merge MyBranch`
 
     `git log`
 
@@ -136,4 +146,6 @@ Tip: To exit the `git log` command, press the "Q" key.
 
 ## Deleting a Branch
 
-`git branch -d NewBranch`
+Once you've merged your changes to the main branch, it's best practice to delete the child branch.
+
+`git branch -d MyBranch`
