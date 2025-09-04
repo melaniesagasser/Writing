@@ -20,7 +20,7 @@ For more information, refer to the official documentation for AsciiDoc at https:
 
 == About AsciiDoc
 
-AsciiDoc is a lightweight markup language like Markdown. 
+AsciiDoc is a lightweight markup language. 
 Like Markdown, AsciiDoc uses plain text syntax, which means that you can use any text editor to create AsciiDoc files. 
 In this example, we'll use Visual Studio Code as it's a common editor used by software developers. 
 However, compared to Markdown, it provides some additional advantages:
@@ -60,7 +60,8 @@ The version number is optional.
 == Quick Reference
 
 === Headings
-Headings, or section titles, use the equal sign in AsciiDoc but the hashtag sign from Markdown is also recognized. The first-level heading is the document title and the paragraph below it the preamble, then follow the next-level headings.
+Headings, or section titles, use the equal sign in AsciiDoc but the hashtag sign from Markdown is also recognized. 
+The first-level heading is the document title and the paragraph below it the preamble, then follow the next-level headings.
 
 ----
 = Document Title
@@ -82,15 +83,19 @@ To assing a title to a paragraph, list, or delimited block element, precede the 
 To add paragraphs, hit the `Return` key twice to insert a blank line.
 
 === Line Breaks
-Use a space followed by a `+` sign, or use the `[%hardbreaks]` option at the beginning of a paragraph. To preserve the hardbreaks throughout the complete document, add this at the beginning of your document: +
+Use a space followed by a `+` sign, or use the `[%hardbreaks]` option at the beginning of a paragraph. 
+To preserve the hardbreaks throughout the complete document, add this at the beginning of your document: +
 `:hardbreaks:`
 
 === Basic Formatting
 In AsciiDoc, you can format text as *bold*, _italic_ or #highlighted#.
-Use a double formatting sign to highlight parts of a word instead of the complete word. For example, \\**un**filtered instead of *un*filtered. 
+Use a double formatting sign to highlight parts of a word instead of the complete word. 
+For example, \\**un**filtered instead of *un*filtered. 
 
 === Cautions and Warnings (Admonitions)
-Use the following admonitions to advise the user. The label must be uppercase and followed by a colon (:). An icon will be added to the admonition.
+Use the following admonitions to advise the user. 
+The label must be uppercase and followed by a colon (:). 
+An icon will be added to the admonition.
 [%hardbreaks]
 - NOTE
 - TIP
@@ -107,7 +112,10 @@ It has several lines
 ----
 
 === Lists
-Use an asterisk (*) or minus sign (-) followed by a blank for each list item. Note that lists with minus signs can't be indented though. Blank lines are required before and after lists. You can add a title to a list by prefixing the title with a period (.).
+Use an asterisk (*) or minus sign (-) followed by a blank for each list item. 
+Note that lists with minus signs can't be indented though. 
+Blank lines are required before and after lists. 
+You can add a title to a list by prefixing the title with a period (.).
 
 .This is the unordered list's header (using asterisks or minus signs)
 ----
@@ -132,7 +140,8 @@ Paid:: The additional components are only available for purchase.
 ----
 
 === Comments
-Use two forward slashes for comments. Comments won't be rendered in the output.
+Use two forward slashes for comments. 
+Comments won't be rendered in the output.
 ----
 // This is a comment.
 ----
@@ -148,7 +157,8 @@ Second line of coment
 === Links
 
 ==== External Links
-You can just copy and paste a link into an AsciiDoc. To hide the "https" part in the rendered links, add the `:hide-uri-scheme:` at the top of the document. 
+You can just copy and paste a link into an AsciiDoc. 
+To hide the "https" part in the rendered links, add the `:hide-uri-scheme:` at the top of the document. 
 To add a link text, add it after the link inside square brackets following the syntax `URL[Link Text]`.
 
 For example:
@@ -200,7 +210,9 @@ Click the image:save.png[Save, title="Save"] button.
 The optional title is displayed as a tooltip for inline images.
 
 === Tables
-To add a table, add `|===` in a new line. Add an empty line after the first row to make it the header row. In the line before the table, you can add parameters to specify custom styles:
+To add a table, add `|===` in a new line. 
+Add an empty line after the first row to make it the header row. 
+In the line before the table, you can add parameters to specify custom styles:
 
 * [grid=rows], [grid=none]
 * [frame=none]
@@ -221,7 +233,9 @@ You can include text files or other files following the syntax:
 `include::filename.adoc[text]`
 
 === Attributes
-Attributes are usually part of the document header, placed directly below the document title (no empty line required). Define attributes in the document by placing them inside colons, followed by the value. For example:
+Attributes are usually part of the document header, placed directly below the document title (no empty line required). 
+Define attributes in the document by placing them inside colons, followed by the value. 
+For example:
 
 ----
 :ProductName: MS Editor++
@@ -244,7 +258,9 @@ You can also set the base path to images (default: empty), icons (default: ./ima
 ----
 
 ==== List of Useful Attributes
-`:sectnums:` Auto-numbers the sections. To turn off the numbering for a specific section, place `:sectnums!:` at the top of the section. This overrides the document-wide setting for this specific section.
+`:sectnums:` Auto-numbers the sections. 
+To turn off the numbering for a specific section, place `:sectnums!:` at the top of the section. 
+This overrides the document-wide setting for this specific section.
 `:toc:` Creates a table of contents at the beginning of the document
 
 
@@ -271,7 +287,8 @@ include::example.html[]
 See also <<Code Callouts>>.
 
 === Code Callouts
-Code callouts explain lines of source code. The explanations are numbered and specified below the code block.
+Code callouts explain lines of source code. 
+The explanations are numbered and specified below the code block.
 
 ----
     [source,ruby]
@@ -288,7 +305,8 @@ Code callouts explain lines of source code. The explanations are numbered and sp
 === Quotes
 Quotes are added in between 4 dashes as delimiters, and preceded by an ID in double square brackets: `\[[gettysburg]]`
 
-Then follows the style `quote` and the author and description in square brackets: `\[quote, name, cite title]`. Notice that the quote itself is delimited by four underscores.
+Then follows the style `quote` and the author and description in square brackets: `\[quote, name, cite title]`. 
+Notice that the quote itself is delimited by four underscores.
 
 ----
 .Gettysburg Address
@@ -345,7 +363,8 @@ In this example, ...
 ----
 
 === Block Metadata
-Blocks are special sections in AsciiDoc that are delimited by four special signs at the start and the end of the block. Examples for blocks are quotes, examples, sample code, and literal style. 
+Blocks are special sections in AsciiDoc that are delimited by four special signs at the start and the end of the block. 
+Examples for blocks are quotes, examples, sample code, and literal style. 
 You can add metadata to the block (see <<Quotes>>) including one or more of the following metadata types:
 
 ----
@@ -355,14 +374,16 @@ You can add metadata to the block (see <<Quotes>>) including one or more of the 
 
 ----
 
-The style controls how the block is converted. See the table at https://asciidoctor.org/docs/asciidoc-writers-guide/#delimited-blocks for more information about styles.
+The style controls how the block is converted. 
+See the table at https://asciidoctor.org/docs/asciidoc-writers-guide/#delimited-blocks for more information about styles.
 
 
+// To Dos:
 
-// Tables nochmal genauer
+// Add more about Tables 
 
 // Footnotes, Indexes, appendix preface, conditional markup, mathematical formulas, diagrams, themes, etc.: see https://asciidoctor.org/docs/user-manual 
 
-// Asciidoctor processor to create the output (PDF, HTML, ePub, etc.). How to customize the template
+// Asciidoctor processor to create the output (PDF, HTML, ePub, etc.). How to customize the template.
 
 // Before you can use the Asciidoctor processor, you have to install the Asciidoctor Ruby Gem. Review the Asciidoctor Installation Guide if you need help to install the gem.
