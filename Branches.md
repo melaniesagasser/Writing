@@ -97,7 +97,7 @@ Commit your changes and add a message:
 
 -->
 
-## Creating a Branch
+### Creating a Branch
 
 1. Go to the folder you want to create a branch for using the `cd` command. For example: `cd FolderName`.
 2. Create a new branch in your repository and give it a name (for example, MyBranch):
@@ -110,30 +110,30 @@ Commit your changes and add a message:
 **Note:** As a shortcut, you can create and navigate to a new branch in one go:
 `git checkout -b MyBranch`
 
-## Making Changes in Your Branch Through Git
+### Making Changes in Your Branch Through Git
 
 1. Add the text for your new file using the command `echo`:
    `echo "This is the first line in my newfile." >> newfile
 2. Verify the changes:
    `cat newfile`
 
-## Verifying the Status of Your Files
+### Verifying the Status of Your Files
 
 Use the `git status` command to verify the current status of files in your repository.
 
-## Adding All Modifications and Additions to the Staging Area
+### Adding All Modifications and Additions to the Staging Area
 
 Use `git add *` as a shortcut to make all files and changes ready to be committed.
 Then use `git commit -m "My Message"` to commit your changes.
 
-## Reverting Committed Changes
+### Reverting Committed Changes
 
 To revert changes after you've committed them, use the following command:
 `git revert HEAD --no-edit` 
 
 The shortcut HEAD rolls back the last commit. You could also specify the ID of your commit here.
 
-## Merging Changes Into Another Branch
+### Merging Changes Into Another Branch
 
 1. Switch to the main branch using the `git checkout`command:
    `git checkout master`
@@ -144,7 +144,7 @@ The shortcut HEAD rolls back the last commit. You could also specify the ID of y
 
 Tip: To exit the `git log` command, press the "Q" key.
 
-## Deleting a Branch
+### Deleting a Branch
 
 Once you've merged your changes to the main branch, it's best practice to delete the child branch.
 
