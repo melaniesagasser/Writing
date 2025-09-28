@@ -31,7 +31,9 @@ To add a file to a child branch in GitHub:
 1. In the repository, select `Add file -> Create new file`.
 2. Enter a name and extension for the file (for example, `Test.md`).
 3. In the `Edit` view of the file, enter your text.
-4. At the bottom of the page, in the `Commit new file` window, add a description of the changes you made to the file, and click the `Commit new file` button.
+4. Click `Commit changes...`. 
+5. In the `Commit changes` window that opens, add a commit message and optionally an extended description of the changes you made to the file.
+6. Click `Commit changes`. 
 
    **Result:** Your file is committed to the child branch.
 
