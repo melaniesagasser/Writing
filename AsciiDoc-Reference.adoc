@@ -22,7 +22,6 @@ For more information, refer to the official documentation for AsciiDoc at https:
 
 AsciiDoc is a lightweight markup language. 
 Like Markdown, AsciiDoc uses plain text syntax, which means that you can use any text editor to create AsciiDoc files. 
-In this example, we'll use Visual Studio Code as it's a common editor used by software developers. 
 However, compared to Markdown, it provides some additional advantages:
 
 - More formatting options
@@ -43,7 +42,7 @@ To save a file in the AsciiDoc format, use the `.adoc` file extension.
 == General Recommendations
 * Start each sentence in a new line. 
 * Use only four characters as delimiters. You could use more, but it's best practice to stick to four (or only two in the case of an open block).
-* Use document attributes as a best practice. Group them together for easy reference:
+* Use document attributes as a best practice. Group them for easy reference:
 ** Metadata for indexing
 ** Settings such as icons.
 ** Refs for URLs and Image links.
@@ -365,7 +364,7 @@ In this example, ...
 === Block Metadata
 Blocks are special sections in AsciiDoc that are delimited by four special signs at the start and the end of the block. 
 Examples for blocks are quotes, examples, sample code, and literal style. 
-You can add metadata to the block (see <<Quotes>>) including one or more of the following metadata types:
+You can add metadata to the block (see <<Quotes>>), including one or more of the following metadata types:
 
 ----
 .Title
